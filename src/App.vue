@@ -17,7 +17,7 @@ export default {
 @import url("https://fonts.googleapis.com/css?family=Fira+Code");
 * {
   box-sizing: border-box;
-  background-color: #000;
+  background-color: #ede7e3;
 }
 
 #app {

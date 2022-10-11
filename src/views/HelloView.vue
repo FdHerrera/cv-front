@@ -10,6 +10,9 @@
     <div class="presentation">
       <h4>Encantado de conocerte&excl;</h4>
     </div>
+    <div class="button-container">
+      <div class="continue-button"><span>Continuemos&excl;</span></div>
+    </div>
   </div>
 </template>
 
@@ -20,7 +23,6 @@ export default {};
 <style lang="scss" scoped>
 .hello-view {
   display: grid;
-  color: #991105;
   grid-template: auto / repeat(4, 1fr);
   padding-left: 0;
 }
@@ -36,19 +38,21 @@ export default {};
   text-align: left;
 
   h1 {
+    color: #003049;
     background: transparent;
     font-size: 4rem;
-    animation-name: left-to-center;
-    animation-duration: 1s;
+    animation-name: top-to-center;
+    animation-duration: 0.7s;
   }
 
   h2 {
+    color: #1d3557;
     background: transparent;
     font-size: 1.5rem;
     margin-top: -10%;
     animation-name: fade-in;
-    animation-duration: 1s;
-    animation-delay: 1s;
+    animation-duration: 0.7s;
+    animation-delay: 0.8s;
     opacity: 0;
     animation-fill-mode: forwards;
     text-transform: uppercase;
@@ -64,10 +68,13 @@ export default {};
 }
 
 .presentation {
+  color: #003049;
+  margin-top: -10%;
+  margin-bottom: 0,2%;
   font-size: 1.5rem;
   grid-column: span 4;
-  animation: typing 3s;
-  animation-delay: 2.5s;
+  animation: typing 2s;
+  animation-delay: 1s;
   animation-fill-mode: forwards;
   opacity: 0;
   white-space: nowrap;
@@ -76,9 +83,32 @@ export default {};
   text-align: left;
 }
 
+.button-container {
+  grid-column: span 4;
+}
+
+.continue-button {
+  border: 2px solid #1d3557;
+  width: inherit;
+  display: inline-block;
+  padding: 3%;
+  text-transform: uppercase;
+  color: #1d3557;
+  opacity: 0;
+  animation-name: fade-in;
+  animation-fill-mode: forwards;
+  animation-duration: 0.5s;
+  animation-delay: 2.5s;
+}
+
 img {
   border-radius: 50%;
+  border: 2px solid #000;
   max-width: 180%;
+  animation-name: right-to-center;
+  position: relative;
+  animation-duration: 0.4s;
+  animation-delay: 0.2s;
 }
 
 @keyframes typing {
@@ -92,12 +122,21 @@ img {
   }
 }
 
-@keyframes left-to-center {
+@keyframes top-to-center {
   from {
-    margin-left: -100%;
+    margin-top: -300%;
   }
   to {
     left: 0%;
+  }
+}
+
+@keyframes right-to-center {
+  from {
+    right: -300%;
+  }
+  to {
+    right: 0%;
   }
 }
 
