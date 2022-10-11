@@ -1,5 +1,5 @@
 <template>
-  <div class="hello-view">
+  <div class="hello-view" :class="{ goTop: goAway }">
     <div class="main">
       <h1>Federico Herrera</h1>
       <h2>Software Developer</h2>
@@ -11,13 +11,32 @@
       <h4>Encantado de conocerte&excl;</h4>
     </div>
     <div class="button-container">
-      <div class="continue-button"><span>Continuemos&excl;</span></div>
+      <div class="continue-button" @click="goHome">
+        <span>Continuemos&excl;</span>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "HelloView",
+  data() {
+    return {
+      goAway: false 
+    }
+  },
+  methods: {
+    goHome() {
+      this.goAway = true
+      waitASec().then(() => console.log("After a sec!"))
+    },
+  },
+};
+
+function waitASec() {
+  return new Promise((resolve) => setTimeout(resolve, 1000));
+}
 </script>
 
 <style lang="scss" scoped>
@@ -38,7 +57,7 @@ export default {};
   text-align: left;
 
   h1 {
-    color: #003049;
+    color: #1d3557;
     background: transparent;
     font-size: 4rem;
     animation-name: top-to-center;
@@ -46,7 +65,7 @@ export default {};
   }
 
   h2 {
-    color: #1d3557;
+    color: #212529;
     background: transparent;
     font-size: 1.5rem;
     margin-top: -10%;
@@ -68,9 +87,8 @@ export default {};
 }
 
 .presentation {
-  color: #003049;
   margin-top: -10%;
-  margin-bottom: 0,2%;
+  margin-bottom: 0, 2%;
   font-size: 1.5rem;
   grid-column: span 4;
   animation: typing 2s;
@@ -107,8 +125,10 @@ img {
   max-width: 180%;
   animation-name: right-to-center;
   position: relative;
-  animation-duration: 0.4s;
-  animation-delay: 0.2s;
+  opacity: 0;
+  animation-duration: 0.8s;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
 }
 
 @keyframes typing {
@@ -134,9 +154,11 @@ img {
 @keyframes right-to-center {
   from {
     right: -300%;
+    opacity: 1;
   }
   to {
     right: 0%;
+    opacity: 1;
   }
 }
 
@@ -146,6 +168,21 @@ img {
   }
   to {
     opacity: 1;
+  }
+}
+
+.goTop {
+  animation-fill-mode: forwards;
+  animation-name: go-top;
+  animation-duration: 0.5s;
+}
+
+@keyframes go-top {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
 </style>

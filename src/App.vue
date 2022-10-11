@@ -11,13 +11,11 @@ export default {
 </script>
 
 <style>
-/*           Colors Palette            */
-/* b68989 873232 771e1e 4d0606 2c0404 */
-
 @import url("https://fonts.googleapis.com/css?family=Fira+Code");
 * {
   box-sizing: border-box;
   background-color: #ede7e3;
+  color: #212529;
 }
 
 #app {
