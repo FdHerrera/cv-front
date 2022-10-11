@@ -11,13 +11,21 @@ export default {
 </script>
 
 <style>
+/*           Colors Palette            */
+/* b68989 873232 771e1e 4d0606 2c0404 */
+
+@import url("https://fonts.googleapis.com/css?family=Fira+Code");
+* {
+  box-sizing: border-box;
+  background-color: #000;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Fira Code", Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-  background-color: #364958;
+  display: flex;
+  margin: 0;
 }
 </style>
