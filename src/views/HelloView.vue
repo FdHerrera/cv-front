@@ -15,21 +15,21 @@
 </template>
 
 <script>
-import ContinueButtonComponent from "@/components/ContinueButtonComponent.vue"
-import {mapGetters} from "vuex";
+import ContinueButtonComponent from "@/components/ContinueButtonComponent.vue";
+import { mapGetters } from "vuex";
 export default {
   name: "HelloView",
   components: {
-    ContinueButtonComponent
+    ContinueButtonComponent,
   },
   computed: {
     inHelloView() {
-      return !this.getInHelloView()
+      return !this.getInHelloView();
     }
   },
   methods: {
-    ...mapGetters(['getInHelloView']),
-  }
+    ...mapGetters(["getInHelloView"]),
+  },
 };
 </script>
 
@@ -53,7 +53,7 @@ export default {
   h1 {
     color: #1d3557;
     background: transparent;
-    font-size: 4rem;
+    font-size: 8vh;
     animation-name: top-to-center;
     animation-duration: 0.7s;
   }
@@ -61,8 +61,7 @@ export default {
   h2 {
     color: #212529;
     background: transparent;
-    font-size: 1.5rem;
-    margin-top: -10%;
+    font-size: 4vh;
     animation-name: fade-in;
     animation-duration: 0.7s;
     animation-delay: 0.8s;
@@ -78,12 +77,14 @@ export default {
   grid-row: 1 /2;
   z-index: 1;
   justify-content: center;
+  overflow: hidden;
+  margin: 1%;
+  margin-right: 0;
 }
 
 .presentation {
-  margin-top: -10%;
   margin-bottom: 0, 2%;
-  font-size: 1.5rem;
+  font-size: 3vh;
   grid-column: span 4;
   animation: typing 2s;
   animation-delay: 1s;
@@ -105,6 +106,53 @@ img {
   animation-duration: 0.8s;
   animation-delay: 2s;
   animation-fill-mode: forwards;
+}
+
+@media (min-width: 600px) {
+  .hello-view {
+    grid-template: 60% auto auto / repeat(8, 1fr);
+  }
+
+  .main {
+    grid-column: 1 / 7;
+    margin-left: 0;
+    max-height: 100%;
+    h1 {
+      font-size: 7vh;
+    }
+  }
+
+  .my-img {
+    grid-column: 5 / 9;
+    grid-row: 1 / 4;
+    padding: 5%;
+  }
+
+  .presentation {
+    grid-column: span 4;
+    text-align: center;
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+@media (min-width: 900px) {
+  .main {
+    h1 {
+      font-size: 10vh;
+    }
+    h2 {
+      font-size: 8vh;
+    }
+  }
+
+  .presentation {
+    font-size: 6vh;
+  }
+
 }
 
 @keyframes typing {

@@ -36,6 +36,7 @@ function waitASec() {
   width: inherit;
   display: inline-block;
   padding: 3%;
+  margin: 1%;
   text-transform: uppercase;
   color: #1d3557;
   opacity: 0;
@@ -44,5 +45,14 @@ function waitASec() {
   animation-duration: 0.5s;
   animation-delay: 2.5s;
   font-size: 1.2rem;
+  cursor: pointer;
 }
+
+@media (min-width: 600px) {
+  .button-container {
+  grid-column: span 4;
+  }
+
+}
+
 </style>

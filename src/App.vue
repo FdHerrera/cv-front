@@ -13,9 +13,10 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css?family=Fira+Code");
 * {
-  box-sizing: border-box;
+  box-sizing: content-box;
   background-color: #ede7e3;
   color: #212529;
+  margin: 0;
 }
 
 #app {
@@ -25,6 +26,7 @@ export default {
   text-align: center;
   display: flex;
   margin: 0;
+  padding: 0;
 }
 
 
@@ -36,4 +38,5 @@ export default {
     opacity: 1;
   }
 }
+
 </style>
