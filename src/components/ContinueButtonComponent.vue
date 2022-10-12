@@ -1,7 +1,15 @@
 <template>
   <div class="button-container">
-    <div class="continue-button" @click="goHome">
-      <span>Continuemos&excl;</span>
+    <div class="continue-button" 
+      @click="goHome"
+      @mouseenter="showArrow = true" 
+      @mouseleave="showArrow = false" 
+      >
+      <span>Continuemos&excl; 
+        <font-awesome-icon 
+          icon="fa-solid fa-angles-right" 
+          v-show="showArrow"
+          :class="{ hovering: showArrow }"/></span>
     </div>
   </div>
 </template>
@@ -11,6 +19,11 @@ import { mapActions } from "vuex";
 
 export default {
   name: "ContinueButton",
+  data() {
+    return {
+      showArrow: false
+    }
+  },
   methods: {
     ...mapActions(["doChangeHelloView"]),
     goHome() {
@@ -46,6 +59,26 @@ function waitASec() {
   animation-delay: 2.5s;
   font-size: 1.2rem;
   cursor: pointer;
+}
+
+.continue-button:hover:before {
+  box-shadow: 0 0 15px #02122a;
+  filter: blur(3px);
+  transition: 1s;
+}
+
+.continue-button:hover {
+  transform: scale(1.1);
+  color: #000;
+  box-shadow: 0 0 15px #02122a;
+  text-shadow: 0 0 15px #02122a;
+  transition: 1s;
+}
+
+.showArrow {
+  box-shadow: 0 0 15px #02122a;
+  filter: blur(3px);
+  transition: 1s;
 }
 
 @media (min-width: 600px) {
