@@ -1,5 +1,5 @@
 <template>
-  <div class="hello-view" :class="{ goTop: goAway }">
+  <div class="hello-view" :class="{ moveAway: inHelloView }">
     <div class="main">
       <h1>Federico Herrera</h1>
       <h2>Software Developer</h2>
@@ -10,33 +10,27 @@
     <div class="presentation">
       <h4>Encantado de conocerte&excl;</h4>
     </div>
-    <div class="button-container">
-      <div class="continue-button" @click="goHome">
-        <span>Continuemos&excl;</span>
-      </div>
-    </div>
+    <continue-button-component />
   </div>
 </template>
 
 <script>
+import ContinueButtonComponent from "@/components/ContinueButtonComponent.vue"
+import {mapGetters} from "vuex";
 export default {
   name: "HelloView",
-  data() {
-    return {
-      goAway: false 
+  components: {
+    ContinueButtonComponent
+  },
+  computed: {
+    inHelloView() {
+      return !this.getInHelloView()
     }
   },
   methods: {
-    goHome() {
-      this.goAway = true
-      waitASec().then(() => console.log("After a sec!"))
-    },
-  },
+    ...mapGetters(['getInHelloView']),
+  }
 };
-
-function waitASec() {
-  return new Promise((resolve) => setTimeout(resolve, 1000));
-}
 </script>
 
 <style lang="scss" scoped>
@@ -101,24 +95,6 @@ function waitASec() {
   text-align: left;
 }
 
-.button-container {
-  grid-column: span 4;
-}
-
-.continue-button {
-  border: 2px solid #1d3557;
-  width: inherit;
-  display: inline-block;
-  padding: 3%;
-  text-transform: uppercase;
-  color: #1d3557;
-  opacity: 0;
-  animation-name: fade-in;
-  animation-fill-mode: forwards;
-  animation-duration: 0.5s;
-  animation-delay: 2.5s;
-}
-
 img {
   border-radius: 50%;
   border: 2px solid #000;
@@ -162,16 +138,7 @@ img {
   }
 }
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.goTop {
+.moveAway {
   animation-fill-mode: forwards;
   animation-name: go-top;
   animation-duration: 0.5s;
